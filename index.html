@@ -33,23 +33,24 @@
                 //const value= response.json()})
                 .then(data => {
                     console.log(data);
-                    const proData = data.data;
+                    // const proData = data;
                    // console.log(proData);
-                    const row = document.getElementById("data-table")
-                    proData.map((item,index) => {
-                        row.innerHTML += `
-                <tr key=${index}>
-                    <td>${item.product_name}</td>
-                    <td>${item.product_description}</td>
-                     <td><img src="${item.product_image}"/></td>
-                    <td>${item.price}</td>
-                    <td>${item.category.category_name}</td>
-                </tr>`;
-                    });
                 })
-                .catch(error => {
-                    console.error('Error fetching data:', error);
-                });
+                //     const row = document.getElementById("data-table")
+                //     proData.map((item,index) => {
+                //         row.innerHTML += `
+                // <tr key=${index}>
+                //     <td>${item.product_name}</td>
+                //     <td>${item.product_description}</td>
+                //      <td><img src="${item.product_image}"/></td>
+                //     <td>${item.price}</td>
+                //     <td>${item.category.category_name}</td>
+                // </tr>`;
+                //     });
+                // })
+                // .catch(error => {
+                //     console.error('Error fetching data:', error);
+                // });
         }
         fetchData();
     </script>

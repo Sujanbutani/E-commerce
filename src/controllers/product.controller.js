@@ -31,7 +31,7 @@ const createProduct = async (req, res) => {
 const getProductList = async (req, res) => {
     try {
        const getList= await productService.getProductList(req,res)
-  
+
       res.status(200).json({
         success: true,
         data: getList,
