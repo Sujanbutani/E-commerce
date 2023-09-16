@@ -14,7 +14,7 @@ const getProductList = async (req, res) => {
 
 // Get product details
 const getProductById = async (productId) => {
-  return Product.findOne(productId);
+  return Product.findById(productId);
 };
 
 // Update product details

@@ -29,8 +29,8 @@
 
             fetch('http://localhost:8080/v1/product/list')
                 .then(response => response.json())
-                .then(json => console.log(json))
-                // const value= response.json()})
+                // .then(json => console.log(json))
+                //const value= response.json()})
                 .then(data => {
                     console.log(data);
                     const proData = data.data;
