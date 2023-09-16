@@ -8,13 +8,21 @@
 </head>
 
 <body>
-    <table id="data-table" border="1">
+    <div class="abc" style="display: flex; justify-content: center; align-items: center;">
+    <table id="data-table" border="1" style="text-align: center;">
         <thead>
             <tr>
 
                 <th>product_name</th>
                 <th>product_description</th>
-                <th>product_image</th>
+                <th>product_image
+                    <style>
+                        img{
+                            width: 100%;
+                            height: 100px;
+                        }
+                    </style>
+                </th>
                 <th>price</th>
                 <th>category</th>
             </tr>
@@ -22,6 +30,7 @@
         <tbody>
         </tbody>
     </table>
+</div>
     <script>
 
 
