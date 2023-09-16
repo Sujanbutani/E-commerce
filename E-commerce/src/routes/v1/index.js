@@ -5,6 +5,8 @@ const productRoute=require("./product.route");
 const orderRoute=require("./order.route");
 const cartRoute =require("./cart.route");
 const subCategoryRouter =require("./subCategory.route");
+const tokenRouter =require("./token.route");
+
 
 const router =express.Router();
 
@@ -14,5 +16,6 @@ router.use("/product", productRoute);
 router.use("/order", orderRoute);
 router.use('/cart', cartRoute);
 router.use("/subcategory", subCategoryRouter);
+router.use("/token", tokenRouter);
 
 module.exports=router;
