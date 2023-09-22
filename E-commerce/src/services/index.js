@@ -5,3 +5,5 @@ module.exports.orderService=require("./order.service");
 module.exports.cartService=require("./cart.service");
 module.exports.subCategoryService=require("./subCategory.service");
 module.exports.tokenService=require("./token.services");
+module.exports.emailService=require("./email.services");
+

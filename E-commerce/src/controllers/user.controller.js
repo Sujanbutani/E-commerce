@@ -1,4 +1,6 @@
-const { userService} = require("../services");
+const { userService,emailService} = require("../services");
+const ejs = require("ejs");
+const path = require("path");
 
 /** create user */
 const createUser = async (req, res) => {
@@ -13,6 +15,27 @@ const createUser = async (req, res) => {
     if (!user) {
       throw new Error("Something went wrong, please try again or later!");
     }
+
+    ejs.renderFile(
+      path.join(__dirname, "../views/otp-template.ejs"),
+      {
+        email: reqBody.email,
+        otp: ("0".repeat(4) + Math.floor(Math.random() * 10 ** 4)).slice(-4),
+        first_name: reqBody.first_name,
+        last_name: reqBody.last_name,
+      },
+      async (err, data) => {
+        if (err) {
+          let userCreated = await userService.getUserByEmail(reqBody.email);
+          if (userCreated) {
+            await userService.deleteUserByEmail(reqBody.email);
+          }
+          throw new Error("Something went wrong, please try again.");
+        } else {
+          emailService.sendMail(reqBody.email, data, "Verify Email");
+        }
+      }
+    );
 
     res.status(200).json({
       success: true,
@@ -97,10 +120,34 @@ const deleteUser = async (req, res) => {
   }
 };
 
+/** Send mail to reqested email */
+const sendMail = async (req, res) => {
+  try {
+    const reqBody = req.body;
+    console.log('get req body');
+    const sendEmail = await emailService.sendMail(
+      reqBody.email,
+      reqBody.subject,
+      reqBody.text
+      );
+      console.log('Send Done..');
+    if (!sendEmail) {
+      throw new Error("Something went wrong, please try again or later.");
+    }
+
+    res
+      .status(200)
+      .json({ success: true, message: "Email send successfully!" });
+  } catch (error) {
+    res.status(400).json({ success: false, message: error.message });
+  }
+};
+
 module.exports = {
   createUser,
   getUserList,
   getUserDetails,
   updateDetails,
   deleteUser,
+  sendMail
 };

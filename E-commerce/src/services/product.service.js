@@ -7,7 +7,7 @@ const createProduct = async (reqBody) => {
 
 // Get product list
 const getProductList = async (req, res) => {
-  return Product.find()
+  return Product.find().count()
   .populate("category");
 
   // return Product.find().populate( "category");
