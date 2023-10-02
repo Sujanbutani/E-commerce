@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const { User } = require("../models");
+const { user } = require("../models");
 const config = require("../config/config");
 
 const auth = () => async (req, res, next) => {
@@ -21,12 +21,12 @@ const auth = () => async (req, res, next) => {
       return next(new Error("Please enter valid token!"));
     }
 
-    const user = await User.findOne({ _id: decoded.user });
-    if (!user) {
+    const User = await user.findOne({ _id: decoded.user });
+    if (!User) {
       return next(new Error("Please authenticate!"));
     }
 
-    req.user = user;
+    req.user = User;
     next();
   } catch (error) {
     return next(new Error(error));

@@ -1,12 +1,12 @@
-const Joi = require("joi");
+const joi = require("joi");
 
-/** Create jsonwebroken  */
-const generateToken = {
-  body: Joi.object({
-    user: Joi.string().required().trim(),
-  }),
+// create token
+const createToken = {
+    body : joi.object().keys({
+        user: joi.string().required().trim()
+    })
 };
 
 module.exports = {
-  generateToken,
-};
+    createToken
+}

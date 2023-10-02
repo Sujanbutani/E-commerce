@@ -1,9 +1,3 @@
-module.exports.userController = require("./user.Controller");
-module.exports.coachController = require("./coach.controller");
-module.exports.playerController = require("./player.controller");
-module.exports.eventController = require("./event.controller");
-module.exports.leaguesController = require("./leagues.controller");
-module.exports.sportController = require("./sport.controller");
-module.exports.teamController = require("./team.controller");
-module.exports.tournamentController = require("./tournament.controller");
-module.exports.tokenController = require("./token.Controller");
+module.exports.userController = require("./user.controller");
+module.exports.tokenController = require("./token.controller");
+module.exports.blogController = require("./blog.controller");
