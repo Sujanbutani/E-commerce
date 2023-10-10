@@ -1,5 +1,4 @@
 const express = require("express");
-const { upload } = require("../../middlewares/upload");
 const validate = require("../../middlewares/validate");
 const { productValidation } = require("../../validations");
 const { productController } = require("../../controllers");
@@ -9,8 +8,6 @@ const router = express.Router();
 /** Create product */
 router.post(
   "/create-product",
-  upload.single("product_image"),
-  // auth(),
   validate(productValidation.createProduct),
   productController.createProduct
 );
@@ -30,7 +27,6 @@ router.get(
 /** Update product details */
 router.put(
   "/update/:productId",
-  upload.single("product_image"),
   productController.updateProduct
 );
 
